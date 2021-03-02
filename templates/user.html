@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>{{ user.username }}</h2>
+    <h6>{{ user.first_name }} {{ user.last_name }}</h6>
+    <p>email me at {{ user.email }}</p>
+
+    <h3>feedback:</h3>
+    {% for feedback in user.feedback %}
+
+        <h4>{{ feedback.title }}</h4>
+        <p>{{ feedback.content }}:</p>
+
+            <button><a href="/feedback/{{ feedback.id }}/update">edit</a></button>
+            <button><a href="/feedback/{{ feedback.id }}/delete">delete</a></button>
+
+
+    {% endfor %}
+    <hr>
+    <button><a href="/users/{{ user.username }}/feedback/add">add feedback</a></button>
+    <button><a href="/users/{{ user.username }}/delete">delete user</a></button>
+
+{% endblock %}
